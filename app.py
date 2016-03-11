@@ -16,7 +16,8 @@ def index():
   if request.method == 'POST':
     ticker = request.form['ticker'].upper()
     print ticker
-    return redirect('/graph',stock=ticker)
+    # return redirect('/graph')
+    return redirect('graph',stock=ticker)
   else:
     return render_template('index.html')
 
