@@ -14,30 +14,27 @@ def main():
 @app.route('/index', methods=['GET','POST'])
 def index():
   if request.method == 'POST':
-    print "GOT TO POST"
-    stock = request.form['ticker']
+    stock = request.form['ticker'].upper()
     print stock
     return redirect('/graph')
   else:
-    print "GOT TO ELSE"
     return render_template('index.html')
 
 @app.route('/graph')
 def graph():
-  #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
-  #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
-  #stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
-  stock_close = np.random.random(50)
-  stock_dates = np.arange(50)
-  #window_size = 30
-  #window = np.ones(window_size)/float(window_size)
+  stock = "FB"
+  df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
+  stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
+  stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
+  #stock_close = np.random.random(50)
+  #stock_dates = np.arange(50)
+  window_size = 30
+  window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
-  #p = figure(width=800, height=350, x_axis_type="datetime")
-  p = figure(width=800, height=350)
+  p = figure(width=800, height=350, x_axis_type="datetime")
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
-  stock = "STOCK"
   p.title = stock + " One-Month Average"
   p.grid.grid_line_alpha=0
   p.xaxis.axis_label = 'Date'
