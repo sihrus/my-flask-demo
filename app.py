@@ -16,7 +16,7 @@ def main():
 def index():
   if request.method == 'POST':
     ticker = request.form['ticker'].upper()
-    print ticker
+    #print ticker
     app.vars['stock'] = ticker
     return redirect('/graph')
     # return redirect(url_for('graph',stock=ticker))
@@ -25,8 +25,6 @@ def index():
 
 @app.route('/graph', methods=['GET','POST'])
 def graph():
-  print "GOT HERE"
-  #stock = "FB"
   stock = app.vars['stock']
   df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
