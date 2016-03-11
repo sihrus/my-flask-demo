@@ -16,17 +16,16 @@ def index():
   print "MADE IT HERE 2"
   return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/index', methods=['POST'])
 def post_ticker():
   print "MADE IT HERE 3"
-  print "MADE IT HERE 4"
   stock = request.form['ticker']
   print stock
   return redirect(url_for('graph'))
   
 @app.route('/graph')
 def graph():
-  print "MADE IT HERE 5"
+  print "MADE IT HERE 4"
   #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
   #stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
