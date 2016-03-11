@@ -21,7 +21,7 @@ def index():
   else:
     return render_template('index.html')
 
-@app.route('/graph/<stock>', methods=['GET','POST'])
+@app.route('/graph', methods=['GET','POST'])
 def graph(stock):
   print "GOT HERE"
   #stock = "FB"
