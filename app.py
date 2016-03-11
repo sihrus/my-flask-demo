@@ -23,15 +23,15 @@ def index():
 @app.route('/graph')
 def graph():
   stock = "FB"
-  df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
-  stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
-  stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
-  #stock_close = np.random.random(50)
-  #stock_dates = np.arange(50)
+  #df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
+  #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
+  #stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
+  stock_close = np.random.random(50)
+  stock_dates = np.arange(50)
   #window_size = 30
   #window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
-  p = figure(width=800, height=350, x_axis_type="datetime")
+  p = figure(tools=TOOLS, width=800, height=350, x_axis_type="datetime")
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
