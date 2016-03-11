@@ -27,6 +27,7 @@ def post_ticker():
   
 @app.route('/graph', methods=['GET','POST'])
 def graph():
+  print "MADE IT HERE 5"
   #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
   #stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
