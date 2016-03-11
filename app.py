@@ -14,11 +14,11 @@ def main():
 def index():
   return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/index', methods=['POST'])
 def post_ticker():
   if request.method == 'POST':
     stock = request.form['ticker']
-  #return redirect(url_for('graph'))
+    return redirect(url_for('graph'))
   
 @app.route('/graph', methods=['GET','POST'])
 def graph():
