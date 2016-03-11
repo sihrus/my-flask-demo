@@ -17,13 +17,14 @@ def index():
     ticker = request.form['ticker'].upper()
     print ticker
     # return redirect('/graph')
-    return redirect('graph',stock=ticker)
+    return redirect(url_for('graph',stock=ticker))
   else:
     return render_template('index.html')
 
 @app.route('/graph', methods=['GET','POST'])
-def graph(stock):
+def graph():
   print "GOT HERE"
+  stock = request.args.get('stock')
   #stock = "FB"
   df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
