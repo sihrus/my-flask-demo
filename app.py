@@ -11,7 +11,7 @@ def main():
   print "MADE IT HERE 1"
   return redirect('/index')
 
-@app.route('/index', methods=['POST'])
+@app.route('/index', methods=['GET','POST'])
 def index():
   if request.method == 'POST':
     print "GOT TO POST"
