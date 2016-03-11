@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-  print "MADE IT HERE 1"
   return redirect('/index')
 
 @app.route('/index', methods=['GET','POST'])
@@ -25,21 +24,19 @@ def index():
 
 @app.route('/graph')
 def graph():
-  print "MADE IT HERE 4"
   #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
   #stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
   stock_close = np.random.random(50)
   stock_dates = np.arange(50)
-  window_size = 30
-  window = np.ones(window_size)/float(window_size)
-  print "MADE IT HERE 5"
+  #window_size = 30
+  #window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
-  p = figure(width=800, height=350, x_axis_type="datetime")
+  #p = figure(width=800, height=350, x_axis_type="datetime")
+  p = figure(width=800, height=350)
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
-  print "MADE IT HERE 6"
   stock = "STOCK"
   p.title = stock + " One-Month Average"
   p.grid.grid_line_alpha=0
@@ -47,11 +44,8 @@ def graph():
   p.yaxis.axis_label = 'Price'
   p.ygrid.band_fill_color="olive"
   p.ygrid.band_fill_alpha = 0.1
-  print "MADE IT HERE 7"
-  script, div = components(p,CDN)
-  print "MADE IT HERE 8"
+  script, div = components(p)
   return render_template('graph.html', script=script, div=div)
-  print "MADE IT HERE 9"
 
 if __name__ == '__main__':
   #app.debug = True
