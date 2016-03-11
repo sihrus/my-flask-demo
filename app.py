@@ -17,7 +17,7 @@ def index():
     print "GOT TO POST"
     stock = request.form['ticker']
     print stock
-    return redirect(url_for('graph'))
+    return redirect('/graph')
   else:
     print "GOT TO ELSE"
     return render_template('index.html')
