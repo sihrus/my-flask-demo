@@ -28,8 +28,8 @@ def graph():
   stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
   #stock_close = np.random.random(50)
   #stock_dates = np.arange(50)
-  window_size = 30
-  window = np.ones(window_size)/float(window_size)
+  #window_size = 30
+  #window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
   p = figure(width=800, height=350, x_axis_type="datetime")
   # add renderers
