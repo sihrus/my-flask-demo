@@ -32,19 +32,24 @@ def graph():
   stock_dates = np.arange(50)
   window_size = 30
   window = np.ones(window_size)/float(window_size)
+  print "MADE IT HERE 5"
   # create a new plot with a a datetime axis type
   p = figure(width=800, height=350, x_axis_type="datetime")
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
+  print "MADE IT HERE 6"
   p.title = stock + " One-Month Average"
   p.grid.grid_line_alpha=0
   p.xaxis.axis_label = 'Date'
   p.yaxis.axis_label = 'Price'
   p.ygrid.band_fill_color="olive"
   p.ygrid.band_fill_alpha = 0.1
+  print "MADE IT HERE 7"
   script, div = components(p)
+  print "MADE IT HERE 8"
   return render_template('graph.html', script=script, div=div)
+  print "MADE IT HERE 9"
 
 if __name__ == '__main__':
   #app.debug = True
