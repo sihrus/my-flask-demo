@@ -14,7 +14,7 @@ def main():
 def index():
   return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def post_ticker():
   text = request.form['ticker']
   df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
