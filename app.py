@@ -14,7 +14,7 @@ def main():
 def index():
   return render_template('index.html')
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['POST'])
 def post_ticker():
   if request.method == 'POST':
     stock = request.form['ticker']
