@@ -20,7 +20,7 @@ def index():
   else:
     return render_template('index.html')
 
-@app.route('/graph')
+@app.route('/graph', methods=['GET','POST'])
 def graph():
   stock = "FB"
   #df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
@@ -31,8 +31,7 @@ def graph():
   #window_size = 30
   #window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
-  TOOLS = 'box_zoom,box_select,crosshair,resize,reset'
-  p = figure(tools=TOOLS, width=800, height=350, x_axis_type="datetime")
+  p = figure(width=800, height=350, x_axis_type="datetime")
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
