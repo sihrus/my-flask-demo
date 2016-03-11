@@ -14,12 +14,14 @@ def main():
 @app.route('/index', methods=['GET','POST'])
 def index():
   if request.method == 'POST':
-    return redirect('graph', stock=request.form['ticker'].upper())
+    ticker = request.form['ticker'].upper()
+    print ticker
+    return redirect('/graph', stock=ticker)
   else:
     return render_template('index.html')
 
 @app.route('/graph/<stock>', methods=['GET','POST'])
-def graph():
+def graph(stock):
   df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
   stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
