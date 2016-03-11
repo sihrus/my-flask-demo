@@ -16,16 +16,15 @@ def index():
   print "MADE IT HERE 2"
   return render_template('index.html')
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['POST'])
 def post_ticker():
   print "MADE IT HERE 3"
-  if request.method == 'POST':
-    print "MADE IT HERE 4"
-    stock = request.form['ticker']
-    print stock
-    return redirect(url_for('graph'))
+  print "MADE IT HERE 4"
+  stock = request.form['ticker']
+  print stock
+  return redirect(url_for('graph'))
   
-@app.route('/graph', methods=['GET','POST'])
+@app.route('/graph')
 def graph():
   print "MADE IT HERE 5"
   #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
