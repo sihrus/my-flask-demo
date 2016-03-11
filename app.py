@@ -20,7 +20,7 @@ def post_ticker():
     stock = request.form['ticker']
     return redirect(url_for('graph'))
   
-@app.route('/graph', methods=['GET',POST'])
+@app.route('/graph', methods=['GET','POST'])
 def graph():
   #df = Quandl.get("WIKI/"+text.upper(),returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   #stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
