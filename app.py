@@ -39,6 +39,7 @@ def graph():
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
   # customize
   print "MADE IT HERE 6"
+  stock = "STOCK"
   p.title = stock + " One-Month Average"
   p.grid.grid_line_alpha=0
   p.xaxis.axis_label = 'Date'
