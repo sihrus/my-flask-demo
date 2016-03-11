@@ -23,7 +23,7 @@ def post_ticker():
     print "MADE IT HERE 4"
     stock = request.form['ticker']
     print stock
-    return redirect(url_for('graph'))
+    #return redirect(url_for('graph'))
   
 @app.route('/graph', methods=['GET','POST'])
 def graph():
