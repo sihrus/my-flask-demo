@@ -21,10 +21,9 @@ def index():
   else:
     return render_template('index.html')
 
-@app.route('/graph', methods=['GET','POST'])
-def graph():
+@app.route('/graph/<stock>', methods=['GET','POST'])
+def graph(stock):
   print "GOT HERE"
-  stock = request.args.get('stock')
   #stock = "FB"
   df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
