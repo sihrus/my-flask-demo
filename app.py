@@ -3,6 +3,7 @@ import Quandl
 import numpy as np
 from bokeh.plotting import figure, output_notebook, show
 from bokeh.embed import components
+from bokeh.resources import CDN
 
 app = Flask(__name__)
 
@@ -47,7 +48,7 @@ def graph():
   p.ygrid.band_fill_color="olive"
   p.ygrid.band_fill_alpha = 0.1
   print "MADE IT HERE 7"
-  script, div = components(p)
+  script, div = components(p,CDN)
   print "MADE IT HERE 8"
   return render_template('graph.html', script=script, div=div)
   print "MADE IT HERE 9"
