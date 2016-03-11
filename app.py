@@ -20,6 +20,7 @@ def index():
 def post_ticker():
   print "MADE IT HERE 3"
   if request.method == 'POST':
+    print "MADE IT HERE 4"
     stock = request.form['ticker']
     print stock
     return redirect(url_for('graph'))
