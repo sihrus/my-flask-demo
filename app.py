@@ -31,6 +31,7 @@ def graph():
   #window_size = 30
   #window = np.ones(window_size)/float(window_size)
   # create a new plot with a a datetime axis type
+  TOOLS = 'box_zoom,box_select,crosshair,resize,reset'
   p = figure(tools=TOOLS, width=800, height=350, x_axis_type="datetime")
   # add renderers
   p.line(stock_dates, stock_close, color='navy', legend='Close Price')
