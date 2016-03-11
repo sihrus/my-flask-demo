@@ -11,18 +11,17 @@ def main():
   print "MADE IT HERE 1"
   return redirect('/index')
 
-@app.route('/index')
-def index():
-  print "MADE IT HERE 2"
-  return render_template('index.html')
-
 @app.route('/index', methods=['POST'])
-def post_ticker():
-  print "MADE IT HERE 3"
-  stock = request.form['ticker']
-  print stock
-  return redirect(url_for('graph'))
-  
+def index():
+  if request.method == 'POST':
+    print "GOT TO POST"
+    stock = request.form['ticker']
+    print stock
+    return redirect(url_for('graph'))
+  else:
+    print "GOT TO ELSE"
+    return render_template('index.html')
+
 @app.route('/graph')
 def graph():
   print "MADE IT HERE 4"
