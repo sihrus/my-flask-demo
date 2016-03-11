@@ -8,12 +8,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-  print "MADE IT HERE 1"
   return redirect('/index')
 
 @app.route('/index')
 def index():
-  print "MADE IT HERE 2"
   return render_template('index.html')
 
 @app.route('/', methods=['GET','POST'])
@@ -23,7 +21,7 @@ def post_ticker():
     print "MADE IT HERE 4"
     stock = request.form['ticker']
     print stock
-    #return redirect(url_for('graph'))
+    return redirect(url_for('graph'))
   
 @app.route('/graph', methods=['GET','POST'])
 def graph():
