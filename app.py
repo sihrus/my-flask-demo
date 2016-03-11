@@ -6,6 +6,7 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 
 app = Flask(__name__)
+app.vars={}
 
 @app.route('/')
 def main():
@@ -16,15 +17,17 @@ def index():
   if request.method == 'POST':
     ticker = request.form['ticker'].upper()
     print ticker
-    # return redirect('/graph')
-    return redirect(url_for('graph',stock=ticker))
+    app.vars['stock'] = ticker
+    return redirect('/graph')
+    # return redirect(url_for('graph',stock=ticker))
   else:
     return render_template('index.html')
 
-@app.route('/graph/<stock>', methods=['GET','POST'])
-def graph(stock):
+@app.route('/graph', methods=['GET','POST'])
+def graph():
   print "GOT HERE"
   #stock = "FB"
+  stock = app.vars['stock']
   df = Quandl.get("WIKI/"+stock,returns="pandas", authtoken="qCQkVD-2dfsdr6Sx4e2b")
   stock_close = np.array(df[df.index >= '2016-02-20']['Close']) 
   stock_dates = np.array(df[df.index >= '2016-02-20'].index, dtype=np.datetime64)
