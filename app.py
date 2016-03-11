@@ -8,10 +8,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
+  print "MADE IT HERE 1"
   return redirect('/index')
 
 @app.route('/index')
 def index():
+  print "MADE IT HERE 2"
   return render_template('index.html')
 
 @app.route('/', methods=['GET','POST'])
